@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/tokens/colors.css">
+<link rel="stylesheet" href="ds/tokens/typography.css">
+<link rel="stylesheet" href="ds/tokens/spacing.css">
+<link rel="stylesheet" href="ds/tokens/radius-shadow.css">
+<link rel="stylesheet" href="ds/tokens/motion.css">
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/_ds_bundle.js"></script>
+<script src="./images.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; } body { margin: 0; } * { box-sizing: border-box; }
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+::selection { background: rgba(168,71,90,0.18); }
+a { color: var(--link-default); } a:hover { color: var(--link-hover); }
+</style>
+</helmet>
+<div style="background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);overflow-x:hidden;position:relative">
+
+<header style="position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);border-bottom:var(--border-hairline)">
+<div style="max-width:var(--container-max);margin:0 auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between">
+<a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+<img src="assets/logo/mark-ink.svg" alt="Mira" style="height:38px;width:auto">
+</a>
+<nav style="display:flex;gap:30px;align-items:center">
+<a href="Home.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Home</a>
+<a href="Work.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Projects</a>
+<a href="About.dc.html" style="text-decoration:none;color:var(--ink);font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid var(--accent-primary)">About</a>
+<a href="Contact.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Contact</a>
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,36px" variant="primary" size="sm" onClick="{{ goToContact }}">Let's talk</x-import>
+</nav>
+</div>
+</header>
+
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter) var(--space-9)">
+<div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center">
+<div>
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--pink-600)">About</span>
+<h1 style="font-family:var(--font-serif);font-weight:600;font-style:italic;font-size:clamp(2.25rem,1.4rem + 3vw,4.5rem);line-height:1.1;color:var(--ink);margin:16px 0 0">Hi, I'm Mira.</h1>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);line-height:var(--lh-relaxed);font-weight:var(--weight-light);max-width:520px;margin:26px 0 0">I'm a multidisciplinary designer who likes making things, figuring things out, and occasionally getting way too excited about a good font.</p>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);line-height:var(--lh-relaxed);font-weight:var(--weight-light);max-width:520px;margin:16px 0 0">I'm especially interested in branding and marketing, and I like figuring out how design can help a brand connect with the people it's trying to reach. I enjoy jumping between different kinds of projects, from branding and logo design to campaigns, digital experiences, and photography.</p>
+</div>
+<div style="width:100%;aspect-ratio:4/5;overflow:hidden">
+<image-slot id="about-portrait" shape="rect" fit="contain" placeholder="Photo of Mira" style="width:100%;height:100%"></image-slot>
+</div>
+</div>
+</section>
+
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter) 0">
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--green-600)">What I Do</span>
+<h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--ink);margin:14px 0 28px;letter-spacing:0">I like working across different parts of design, but I'm especially interested in:</h2>
+<div style="display:flex;flex-wrap:wrap;gap:14px">
+<sc-for list="{{ whatIDo }}" as="item" hint-placeholder-count="7">
+<span style="font-family:var(--font-sans);font-size:17px;font-weight:600;color:{{ item.fg }};background:{{ item.bg }};padding:14px 26px;border-radius:var(--radius-pill)">{{ item.label }}</span>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter) 0">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+<div>
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--pink-600)">Before I Was a Designer…</span>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);line-height:var(--lh-relaxed);font-weight:var(--weight-light);margin:20px 0 0">Before studying design, I spent two years as a photographer in the Navy. I photographed people, places, events, and operational activities, and also got some experience with videography. A lot of that work can't be shown because it's classified, but the experience taught me a lot about photography, visual storytelling, attention to detail, and staying calm when things get a little chaotic.</p>
+</div>
+<div style="width:100%;aspect-ratio:4/5;overflow:hidden">
+<image-slot id="about-navy-photo" shape="rect" fit="contain" placeholder="Photo from my time as a Navy photographer" style="width:100%;height:100%"></image-slot>
+</div>
+</div>
+</section>
+
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter) 0">
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--green-600)">Skills &amp; Software</span>
+<h2 style="font-family:var(--font-serif);font-weight:600;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--ink);margin:14px 0 28px;letter-spacing:0">Click and drag to explore.</h2>
+<div ref="{{ setCloudRef }}" onPointerDown="{{ onPointerDown }}" onPointerMove="{{ onPointerMove }}" onPointerUp="{{ onPointerUp }}" onPointerLeave="{{ onPointerUp }}" style="position:relative;width:100%;aspect-ratio:16/9;max-height:820px;min-height:540px;border-radius:var(--radius-lg);background:var(--surface-alt);overflow:hidden;cursor:grab;touch-action:none;user-select:none">
+<span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-serif);font-style:italic;font-weight:600;font-size:44px;color:var(--pink-600);pointer-events:none;z-index:500">Skills</span>
+</div>
+<p style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">{{ skillsPlainText }}</p>
+</section>
+
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter) var(--space-9);position:relative">
+<div style="position:absolute;top:-10px;right:6%;width:18px;height:18px;border-radius:50%;border:2px solid var(--pink-500);animation:floatY 5s ease-in-out infinite"></div>
+<div style="position:absolute;bottom:0;left:4%;width:20px;height:20px;border:2px solid var(--green-500);transform:rotate(45deg);animation:floatY 6.5s ease-in-out infinite 1s"></div>
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--pink-600)">When I'm Not Designing</span>
+<h2 style="font-family:var(--font-serif);font-weight:600;font-style:italic;font-size:clamp(1.75rem,3.2vw,2.75rem);color:var(--ink);margin:14px 0 20px;line-height:1.25">Probably sewing, baking, or reading.</h2>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);line-height:var(--lh-relaxed);font-weight:var(--weight-light);max-width:640px;margin:0">When I'm not designing, I'm usually sewing, baking, or reading. Basically, I like making things with my hands, getting lost in a good story, and occasionally remembering that I should probably step away from my computer.</p>
+</section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  skillLabels = ['Adobe Illustrator','Adobe InDesign','Adobe Premiere Pro','Adobe After Effects','Adobe Lightroom','Adobe Fresco','WordPress','Canva','Procreate','Blender','Photography','Videography','Branding','Logo Design','Visual Identity','Marketing','Campaign Design','Digital Design','Creative Problem Solving'];
+  yaw = 0.5; pitch = -0.2; vYaw = 0.0018; vPitch = 0; dragging = false; lastX = 0; lastY = 0; hoverIndex = -1;
+  wordRefs = [];
+
+  componentDidMount() {
+    import('./cursor.js').then((m) => m.initCursor());
+    this.baseUnit = this.computeSpreadLayout();
+    this._mounted = true;
+    this.onResize = () => this.measure();
+    window.addEventListener('resize', this.onResize);
+    this.buildWordDom();
+  }
+
+  // Built imperatively (not via sc-for) so exactly one DOM node exists per
+  // skill — the templating layer was leaving an untracked duplicate node
+  // per list item that never received a transform.
+  buildWordDom = () => {
+    if (!this._mounted) return;
+    if (!this.cloudEl) { requestAnimationFrame(this.buildWordDom); return; }
+    if (this.wordRefs && this.wordRefs.length) return;
+    this.wordRefs = this.skillLabels.map((label, i) => {
+      const el = document.createElement('span');
+      el.textContent = label;
+      el.setAttribute('aria-hidden', 'true');
+      Object.assign(el.style, {
+        position: 'absolute', left: '50%', top: '50%', whiteSpace: 'nowrap',
+        fontFamily: 'var(--font-sans)', fontWeight: '600',
+        fontSize: (12 + (i % 3)) + 'px', color: 'var(--ink-70)'
+      });
+      el.addEventListener('mouseenter', () => { this.hoverIndex = i; });
+      el.addEventListener('mouseleave', () => { this.hoverIndex = -1; });
+      this.cloudEl.appendChild(el);
+      return el;
+    });
+    this.measure();
+    this.layout();
+    // setInterval rather than requestAnimationFrame: rAF can be starved
+    // entirely in some preview/automation contexts, silently freezing the
+    // map; a timer keeps the idle drift and drag response working everywhere.
+    this._timer = setInterval(this.tick, 32);
+  };
+
+  computeSpreadLayout() {
+    const labels = this.skillLabels;
+    const n = labels.length;
+    const poolSize = n * 14;
+    const golden = Math.PI * (3 - Math.sqrt(5));
+    const pool = [];
+    for (let i = 0; i < poolSize; i++) {
+      const y = 1 - (i / (poolSize - 1)) * 2;
+      const r = Math.sqrt(Math.max(0, 1 - y * y));
+      const theta = golden * i;
+      pool.push({ x: Math.cos(theta) * r, y, z: Math.sin(theta) * r, used: false });
+    }
+    const order = labels.map((label, i) => ({ i, w: label.length })).sort((a, b) => b.w - a.w);
+    const chosen = new Array(n);
+    const placed = [];
+    order.forEach((item) => {
+      let best = -1, bestScore = -Infinity;
+      for (let p = 0; p < pool.length; p++) {
+        if (pool[p].used) continue;
+        const cand = pool[p];
+        if (placed.length === 0) { best = p; break; }
+        let minAngle = Infinity;
+        for (const u of placed) {
+          const dot = Math.max(-1, Math.min(1, cand.x * u.pt.x + cand.y * u.pt.y + cand.z * u.pt.z));
+          const angle = Math.acos(dot) / (1 + (u.w + item.w) * 0.012);
+          if (angle < minAngle) minAngle = angle;
+        }
+        if (minAngle > bestScore) { bestScore = minAngle; best = p; }
+      }
+      pool[best].used = true;
+      placed.push({ pt: pool[best], w: item.w });
+      chosen[item.i] = { x: pool[best].x, y: pool[best].y, z: pool[best].z };
+    });
+    return chosen;
+  }
+
+  measure() {
+    if (!this.cloudEl) return;
+    const rect = this.cloudEl.getBoundingClientRect();
+    // focal is always R*2.6, so the nearest-word scale is a constant 1.625 —
+    // use it to size the sphere so no projected label leaves the box.
+    const nearScale = 2.6 / 1.6;
+    const maxHalfW = Math.max(120, rect.width / 2 - 78);
+    const maxHalfH = Math.max(70, rect.height / 2 - 22);
+    this.R = Math.max(140, Math.min(rect.height * 0.46, maxHalfH / nearScale));
+    this.focal = this.R * 2.6;
+    this.minScale = this.focal / (this.focal + this.R);
+    this.maxScale = this.focal / (this.focal - this.R);
+    this.stretchX = Math.min(2.15, Math.max(1, maxHalfW / (this.R * this.maxScale)));
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+    if (this._timer) clearInterval(this._timer);
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  tick = () => {
+    if (!this.dragging) {
+      this.yaw += this.vYaw;
+      this.pitch += this.vPitch;
+      this.vYaw *= 0.95;
+      this.vPitch *= 0.95;
+      if (Math.abs(this.vYaw) < 0.0002) this.vYaw = 0;
+      if (Math.abs(this.vPitch) < 0.0002) this.vPitch = 0;
+      this.pitch = Math.max(-1, Math.min(1, this.pitch));
+    }
+    this.layout();
+  };
+
+  layout() {
+    if (!this.baseUnit || !this.R) return;
+    const cosY = Math.cos(this.yaw), sinY = Math.sin(this.yaw);
+    const cosP = Math.cos(this.pitch), sinP = Math.sin(this.pitch);
+    this.baseUnit.forEach((u, i) => {
+      const el = this.wordRefs[i];
+      if (!el) return;
+      const pt = { x: u.x * this.R, y: u.y * this.R, z: u.z * this.R };
+      const x1 = pt.x * cosY + pt.z * sinY;
+      const z1 = -pt.x * sinY + pt.z * cosY;
+      const y1 = pt.y;
+      const y2 = y1 * cosP - z1 * sinP;
+      const z2 = y1 * sinP + z1 * cosP;
+      const scale = this.focal / (this.focal + z2);
+      const t = (scale - this.minScale) / (this.maxScale - this.minScale);
+      const opacity = Math.max(0.4, Math.min(1, 0.4 + t * 0.6));
+      const hoverBoost = this.hoverIndex === i ? 1.1 : 1;
+      const stretchX = this.stretchX || 1;
+      let sx = x1 * scale * stretchX;
+      let sy = y2 * scale;
+      const skillsHalfW = 108, skillsHalfH = 34;
+      const ax = Math.abs(sx), ay = Math.abs(sy);
+      if (ax < skillsHalfW && ay < skillsHalfH) {
+        const pushX = skillsHalfW - ax;
+        const pushY = skillsHalfH - ay;
+        if (sx === 0 && sy === 0) { sx = skillsHalfW; }
+        else if (pushX < pushY) { sx += sx >= 0 ? pushX : -pushX; }
+        else { sy += sy >= 0 ? pushY : -pushY; }
+      }
+      el.style.transform = `translate(-50%,-50%) translate(${sx}px, ${sy}px) scale(${scale * hoverBoost})`;
+      el.style.opacity = opacity;
+      el.style.zIndex = Math.round(z2 + 1000);
+      el.style.color = this.hoverIndex === i ? 'var(--pink-600)' : 'var(--ink-70)';
+    });
+  }
+
+  onPointerDown = (e) => {
+    this.dragging = true; this.lastX = e.clientX; this.lastY = e.clientY;
+    this.vYaw = 0; this.vPitch = 0;
+    if (e.target && e.target.setPointerCapture) { try { e.target.setPointerCapture(e.pointerId); } catch (err) {} }
+  };
+  onPointerMove = (e) => {
+    if (!this.dragging) return;
+    const dx = e.clientX - this.lastX, dy = e.clientY - this.lastY;
+    this.lastX = e.clientX; this.lastY = e.clientY;
+    this.yaw += dx * 0.006;
+    this.pitch += dy * 0.006;
+    this.pitch = Math.max(-1, Math.min(1, this.pitch));
+    this.vYaw = dx * 0.006;
+    this.vPitch = dy * 0.006;
+  };
+  onPointerUp = () => { this.dragging = false; };
+  setCloudRef = (el) => { this.cloudEl = el; };
+
+  renderVals() {
+    const whatIDoLabels = ['Branding', 'Logo Design', 'Visual Identities', 'Marketing & Campaigns', 'Digital Experiences', 'Photography', 'Creative Problem Solving'];
+    return {
+      setCloudRef: this.setCloudRef,
+      skillsPlainText: this.skillLabels.join(', '),
+      onPointerDown: this.onPointerDown,
+      onPointerMove: this.onPointerMove,
+      onPointerUp: this.onPointerUp,
+      whatIDo: whatIDoLabels.map((label, i) => ({ label, bg: i % 2 ? 'var(--green-50)' : 'var(--pink-50)', fg: i % 2 ? 'var(--green-700)' : 'var(--pink-700)' })),
+      goToContact: () => { window.location.href = 'Contact.dc.html'; }
+    };
+  }
+}
+</script>
+</body>
+</html>

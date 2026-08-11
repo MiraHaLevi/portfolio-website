@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/tokens/colors.css">
+<link rel="stylesheet" href="ds/tokens/typography.css">
+<link rel="stylesheet" href="ds/tokens/spacing.css">
+<link rel="stylesheet" href="ds/tokens/radius-shadow.css">
+<link rel="stylesheet" href="ds/tokens/motion.css">
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/_ds_bundle.js"></script>
+<script src="./images.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; }
+* { box-sizing: border-box; }
+@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes dashSpin { to { transform: rotate(360deg); } }
+::selection { background: rgba(168,71,90,0.18); }
+a { color: var(--link-default); }
+a:hover { color: var(--link-hover); }
+</style>
+</helmet>
+<div style="background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);overflow-x:hidden;position:relative">
+
+<div ref="{{ setProgressRef }}" style="position:fixed;top:0;left:0;height:3px;width:0%;background:var(--accent-primary);z-index:9999"></div>
+
+<header style="position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.86); backdrop-filter: blur(10px); border-bottom: var(--border-hairline)">
+<div style="max-width:var(--container-max);margin:0 auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between">
+<a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+<img src="assets/logo/mark-ink.svg" alt="Mira" style="height:38px;width:auto">
+</a>
+<nav style="display:flex;gap:30px;align-items:center">
+<a href="#top" style="text-decoration:none;color:{{ navHomeColor }};font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid {{ navHomeBorder }};transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-base) var(--ease-out)">Home</a>
+<a href="Work.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid transparent;transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-base) var(--ease-out)">Projects</a>
+<a href="About.dc.html" style="text-decoration:none;color:{{ navAboutColor }};font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid {{ navAboutBorder }};transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-base) var(--ease-out)">About</a>
+<a href="Contact.dc.html" style="text-decoration:none;color:{{ navContactColor }};font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid {{ navContactBorder }};transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-base) var(--ease-out)">Contact</a>
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,36px" variant="primary" size="sm" onClick="{{ goToContact }}">Let's talk</x-import>
+</nav>
+</div>
+</header>
+
+<section id="top" style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter) var(--space-8);display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;position:relative">
+<div>
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--pink-600)">Multidisciplinary Designer</span>
+<h1 style="font-family:var(--font-serif);font-weight:600;font-style:italic;font-size:clamp(2.25rem,1.2rem + 3.5vw,5.5rem);line-height:var(--lh-tight);letter-spacing:0;color:var(--ink);margin:18px 0 0">Hello, I'm Mira.</h1>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);line-height:var(--lh-relaxed);font-weight:var(--weight-light);max-width:520px;margin:26px 0 0">I build brands, campaigns, and digital experiences that help people connect with the things they care about.</p>
+<div style="display:flex;gap:16px;margin-top:36px;flex-wrap:wrap">
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,52px" variant="primary" size="lg" onClick="{{ scrollToWork }}">View my work</x-import>
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,52px" variant="ghost" size="lg" onClick="{{ goToAbout }}">About me →</x-import>
+</div>
+</div>
+<div ref="{{ setHeroVisualRef }}" style="position:relative;aspect-ratio:3/4;width:100%;display:flex;align-items:center;justify-content:center">
+<div ref="{{ setShapeRef1 }}" style="position:absolute;top:4%;left:0%;width:20px;height:20px;border-radius:50%;border:2px solid var(--pink-500);animation:floatY 5s ease-in-out infinite"></div>
+<div ref="{{ setShapeRef2 }}" style="position:absolute;bottom:8%;right:2%;width:24px;height:24px;border:2px solid var(--green-500);transform:rotate(45deg);animation:floatY 6.5s ease-in-out infinite 1s"></div>
+<svg width="88%" height="88%" viewBox="0 0 380 380" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:dashSpin 44s linear infinite">
+<circle cx="190" cy="190" r="172" fill="none" stroke="var(--pink-300)" stroke-width="1.5" stroke-dasharray="6 10"></circle>
+</svg>
+<div style="width:78%;aspect-ratio:3/4;overflow:hidden;position:relative;box-shadow:var(--shadow-lg)">
+<image-slot id="hero-portrait" shape="rect" fit="contain" placeholder="Portrait — layered / masked shot of Mira" style="width:100%;height:100%"></image-slot>
+</div>
+</div>
+</section>
+
+<section style="background:var(--surface-alt);padding:var(--space-6) var(--gutter)">
+<div style="max-width:var(--container-max);margin:0 auto;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:18px 0">
+<sc-for list="{{ disciplineTags }}" as="tag" hint-placeholder-count="6">
+<span style="font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:{{ tag.fg }};background:{{ tag.bg }};padding:5px 13px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;white-space:nowrap">{{ tag.name }}</span>
+</sc-for>
+</div>
+</section>
+
+<section id="work" style="max-width: var(--container-max); margin: 0 auto; padding: var(--space-9) var(--gutter)">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:40px;transition:opacity var(--dur-page) var(--ease-out),transform var(--dur-page) var(--ease-out);{{ workRevealCss }}">
+<div style="max-width:640px">
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--pink-600)">Selected Work</span>
+<h2 style="font-family:var(--font-serif);font-weight:600;font-size:var(--text-h1);color:var(--ink);margin:14px 0 0;letter-spacing:0;line-height:var(--lh-snug)">Projects across branding, editorial, and digital design.</h2>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:48px 40px">
+<sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+<a href="{{ p.href }}" onClick="{{ p.onClick }}" onMouseEnter="{{ p.onEnter }}" onMouseLeave="{{ p.onLeave }}" data-cursor="View project" style="text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:14px;grid-column:{{ p.gridColumn }};cursor:{{ p.cursor }};{{ p.wrapCss }}">
+<div data-fixed-ratio="true" style="overflow:hidden;aspect-ratio:{{ p.imgAspect }};position:relative;background:transparent">
+<div style="width:100%;height:100%;transition:transform var(--dur-slow) var(--ease-out);{{ p.imgScaleCss }}">
+<image-slot id="{{ p.imgId }}" shape="rect" fit="contain" placeholder="{{ p.title }}" style="width:100%;height:100%"></image-slot>
+</div>
+<div style="position:absolute;inset:0;pointer-events:none;transition:opacity var(--dur-base) var(--ease-out);{{ p.overlayCss }}"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<span style="font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:{{ p.badgeFg }};background:{{ p.badgeBg }};padding:5px 13px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;white-space:nowrap;align-self:flex-start">{{ p.category }}</span>
+<span style="font-size:13px;color:var(--ink-45)">{{ p.year }}</span>
+</div>
+<h3 style="font-family:var(--font-serif);font-size:22px;font-weight:600;color:var(--ink);margin:0;letter-spacing:0;display:flex;align-items:center;gap:8px">{{ p.title }}<span style="display:inline-block;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base) var(--ease-out);{{ p.arrowCss }}">→</span></h3>
+<p style="font-family:var(--font-sans);font-size:14.5px;color:var(--ink-70);margin:0;line-height:1.5;max-width:460px">{{ p.desc }}</p>
+</div>
+</a>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:center;margin-top:56px">
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,52px" variant="secondary" size="lg" onClick="{{ goToWork }}">See all projects →</x-import>
+</div>
+</section>
+
+<section id="about-teaser" style="max-width:var(--container-max);margin:0 auto;padding:var(--space-9) var(--gutter)">
+<div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:center;transition:opacity var(--dur-page) var(--ease-out),transform var(--dur-page) var(--ease-out);{{ aboutRevealCss }}">
+<div style="width:100%;aspect-ratio:4/5;overflow:hidden;box-shadow:var(--shadow-md)">
+<image-slot id="about-portrait" shape="rect" fit="contain" placeholder="Studio / candid shot of Mira" style="width:100%;height:100%"></image-slot>
+</div>
+<div>
+<span style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--green-600)">About</span>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);line-height:var(--lh-relaxed);color:var(--ink-70);font-weight:var(--weight-light);max-width:560px;margin:20px 0 16px">I'm a multidisciplinary designer who really likes branding, marketing, and figuring out why people connect with certain things. I like jumping between different kinds of projects, whether that means building a visual identity, figuring out a campaign, designing for digital, or picking up a camera.</p>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);line-height:var(--lh-relaxed);color:var(--ink-70);font-weight:var(--weight-light);max-width:560px;margin:0 0 32px">I'm still figuring out exactly where design will take me, which is part of the fun. I mostly just want to make things that people actually want to look at, interact with, and remember.</p>
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,44px" variant="ghost" onClick="{{ goToAbout }}">More about me →</x-import>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    activeCategory: 'All',
+    hoveredCard: null,
+    activeSection: 'top',
+    workRevealed: false,
+    aboutRevealed: false,
+    contactRevealed: false
+  };
+
+  projectsData = [
+    { id: 'colorplan', title: 'Colorplan Digital Campaign', category: 'Animation', tone: 'green', year: '2024', desc: 'A live brief with GF Smith to create a one-minute animation and digital campaign for Colorplan paper.', hasCaseStudy: true, href: 'Colorplan-Digital-Campaign.dc.html', imgId: 'project-colorplan', featured: false },
+    { id: 'second-act', title: 'The Second Act', category: 'Conceptual Design', tone: 'pink', year: '2024', desc: 'A conceptual digital support platform for people navigating major change between ages 45 and 55.', hasCaseStudy: true, href: 'The-Second-Act.dc.html', imgId: 'project-second-act', featured: false },
+    { id: 'tacenda', title: 'Tacenda', category: 'Photography', tone: 'pink', year: '2024', desc: 'A final exhibition exploring emotions society tends not to talk about.', hasCaseStudy: true, href: 'Tacenda.dc.html', imgId: 'project-tacenda', featured: false }
+  ];
+
+  componentDidMount() {
+    this._raf = null;
+    this.onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+        if (this.progressEl) this.progressEl.style.width = Math.min(100, Math.max(0, pct)) + '%';
+
+        const ids = ['work', 'about-teaser', 'contact'];
+        let current = 'top';
+        for (const id of ids) {
+          const el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top < window.innerHeight * 0.5) current = id;
+        }
+        if (current !== this.state.activeSection) this.setState({ activeSection: current });
+
+        const updates = {};
+        ids.forEach((id) => {
+          const el = document.getElementById(id);
+          const key = id === 'about-teaser' ? 'aboutRevealed' : id + 'Revealed';
+          if (el && el.getBoundingClientRect().top < window.innerHeight * 0.82 && !this.state[key]) updates[key] = true;
+        });
+        if (Object.keys(updates).length) this.setState(updates);
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+
+    import('./cursor.js').then((m) => m.initCursor());
+    this.onMouseMove = (e) => {
+      if (!this.heroVisualEl) return;
+      const rect = this.heroVisualEl.getBoundingClientRect();
+      const dx = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const dy = (e.clientY - rect.top - rect.height / 2) / rect.height;
+      if (this.shapeRef1) this.shapeRef1.style.transform = `translate(${dx * 16}px, ${dy * 16}px)`;
+      if (this.shapeRef2) this.shapeRef2.style.transform = `translate(${dx * -12}px, ${dy * -12}px) rotate(45deg)`;
+    };
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+
+  // Photos should never be cropped: once a real image is dropped into a slot,
+  // resize its aspect-ratio box to match the photo's own proportions instead
+  // of the placeholder ratio. Watches every <image-slot> on the page, and
+  // re-applies on every re-render since hover/reveal state resets inline styles.
+  setProgressRef = (el) => { this.progressEl = el; };
+  setHeroVisualRef = (el) => { this.heroVisualEl = el; if (el) el.onmousemove = this.onMouseMove; };
+  setShapeRef1 = (el) => { this.shapeRef1 = el; };
+  setShapeRef2 = (el) => { this.shapeRef2 = el; };
+
+  scrollTo(id) {
+    return (e) => { if (e && e.preventDefault) e.preventDefault(); const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
+  }
+
+  buildProjects() {
+    const hov = this.state.hoveredCard;
+    return this.projectsData
+      .map((p, i) => {
+        const isHover = hov === p.id;
+        const badgeBg = p.tone === 'green' ? 'var(--green-50)' : 'var(--pink-50)';
+        const badgeFg = p.tone === 'green' ? 'var(--green-700)' : 'var(--pink-700)';
+        return {
+          ...p,
+          onEnter: () => this.setState({ hoveredCard: p.id }),
+          onLeave: () => this.setState({ hoveredCard: null }),
+          onClick: p.hasCaseStudy ? null : (e) => { if (e && e.preventDefault) e.preventDefault(); },
+          gridColumn: p.featured ? '1 / -1' : 'auto',
+          imgAspect: p.featured ? '21/9' : '4/3',
+          cursor: p.hasCaseStudy ? 'pointer' : 'default',
+          wrapCss: `opacity:${this.state.workRevealed ? 1 : 0};transform:${this.state.workRevealed ? 'translateY(0)' : 'translateY(24px)'};transition:opacity var(--dur-page) var(--ease-out) ${(i % 3) * 0.08}s, transform var(--dur-page) var(--ease-out) ${(i % 3) * 0.08}s`,
+          imgScaleCss: `transform:${isHover ? 'scale(1.045)' : 'scale(1)'}`,
+          overlayCss: `background:${p.tone === 'green' ? 'var(--green-600)' : 'var(--pink-500)'};opacity:${isHover ? 0.14 : 0}`,
+          arrowCss: `opacity:${isHover ? 1 : 0};transform:translateX(${isHover ? '0' : '-4px'})`,
+          badgeBg, badgeFg
+        };
+      });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const navColor = (active) => active ? 'var(--ink)' : 'var(--ink-70)';
+    const navBorder = (active) => active ? 'var(--accent-primary)' : 'transparent';
+    const revealCss = (on) => `opacity:${on ? 1 : 0};transform:translateY(${on ? '0' : '24px'})`;
+
+    return {
+      navHomeColor: navColor(s.activeSection === 'top'), navHomeBorder: navBorder(s.activeSection === 'top'),
+      navWorkColor: navColor(s.activeSection === 'work'), navWorkBorder: navBorder(s.activeSection === 'work'),
+      navAboutColor: navColor(s.activeSection === 'about-teaser'), navAboutBorder: navBorder(s.activeSection === 'about-teaser'),
+      navContactColor: navColor(s.activeSection === 'contact'), navContactBorder: navBorder(s.activeSection === 'contact'),
+      scrollToContact: this.scrollTo('contact'),
+      goToContact: () => { window.location.href = 'Contact.dc.html'; },
+      goToAbout: () => { window.location.href = 'About.dc.html'; },
+      scrollToWork: this.scrollTo('work'),
+      scrollToAbout: this.scrollTo('about-teaser'),
+      noop: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+      goToWork: () => { window.location.href = 'Work.dc.html'; },
+      disciplineTags: ['Brand Strategy', 'Identity Systems', 'Editorial Design', 'Campaign Design', 'Web Design', 'Photography'].map((name, i) => ({
+        name, bg: i % 2 ? 'var(--green-50)' : 'var(--pink-50)', fg: i % 2 ? 'var(--green-700)' : 'var(--pink-700)'
+      })),
+      projects: this.buildProjects(),
+      setProgressRef: this.setProgressRef,
+      setHeroVisualRef: this.setHeroVisualRef,
+      setShapeRef1: this.setShapeRef1,
+      setShapeRef2: this.setShapeRef2,
+      ghostOnDark: 'color:var(--white)',
+      workRevealCss: revealCss(s.workRevealed),
+      aboutRevealCss: revealCss(s.aboutRevealed),
+      contactRevealCss: revealCss(s.contactRevealed)
+    };
+  }
+}
+</script>
+</body>
+</html>

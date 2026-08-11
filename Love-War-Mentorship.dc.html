@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/tokens/colors.css">
+<link rel="stylesheet" href="ds/tokens/typography.css">
+<link rel="stylesheet" href="ds/tokens/spacing.css">
+<link rel="stylesheet" href="ds/tokens/radius-shadow.css">
+<link rel="stylesheet" href="ds/tokens/motion.css">
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/_ds_bundle.js"></script>
+<script src="./images.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; } body { margin: 0; } * { box-sizing: border-box; }
+::selection { background: rgba(168,71,90,0.18); }
+a { color: var(--link-default); } a:hover { color: var(--link-hover); }
+</style>
+</helmet>
+<div style="background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);overflow-x:hidden;position:relative">
+<div ref="{{ setProgressRef }}" style="position:fixed;top:0;left:0;height:3px;width:0%;background:var(--accent-primary);z-index:9999"></div>
+<header style="position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);border-bottom:var(--border-hairline)">
+<div style="max-width:var(--container-max);margin:0 auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between">
+<a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+<img src="assets/logo/mark-ink.svg" alt="Mira" style="height:38px;width:auto">
+</a>
+<nav style="display:flex;gap:30px;align-items:center">
+<a href="Home.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Home</a>
+<a href="Work.dc.html" style="text-decoration:none;color:var(--ink);font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid var(--accent-primary)">Projects</a>
+<a href="About.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">About</a>
+<a href="Contact.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Contact</a>
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,36px" variant="primary" size="sm" onClick="{{ goToContact }}">Let's talk</x-import>
+</nav>
+</div>
+</header>
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--gutter) var(--space-8)">
+<a href="Work.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:13.5px;font-weight:600;display:inline-block;margin-bottom:28px">← All work</a>
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+<sc-for list="{{ serviceTags }}" as="t" hint-placeholder-count="2">
+<span style="font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--green-700);background:var(--green-50);padding:5px 13px;border-radius:var(--radius-pill);white-space:nowrap">{{ t }}</span>
+</sc-for>
+</div>
+<h1 style="font-family:var(--font-serif);font-weight:600;font-style:italic;font-size:clamp(2rem,1.3rem + 2.5vw,3.5rem);letter-spacing:0;color:var(--ink);margin:0 0 20px;max-width:760px;line-height:1.15">Love&amp;War</h1>
+<div style="display:flex;flex-direction:column;gap:16px;max-width:820px">
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);font-weight:var(--weight-light);margin:0">A conceptual hospitality experience developed in collaboration with Peter Tashjian, a founding partner of Love&amp;War, a brand strategy and design firm specializing in hospitality.</p>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);font-weight:var(--weight-light);margin:0">Over the course of five weeks, I worked closely with Peter to develop a concept from strategy through to visual direction. The project culminated in a PDF presentation and pitch deck that brought the proposed hospitality experience, brand thinking, and creative direction together into a cohesive concept.</p>
+</div>
+</section>
+<section style="max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter) var(--space-9)">
+<span style="display:block;font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-45);margin:0 0 20px">Pitch Deck</span>
+<div style="max-width:520px;display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--surface-alt);border-radius:var(--radius-lg)">
+<div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--pink-50);display:flex;align-items:center;justify-content:center;flex:none">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--pink-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M15 2v5h5"></path></svg>
+</div>
+<div style="flex:1">
+<p style="margin:0;font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--ink)">Love&amp;War — presentation &amp; pitch deck</p>
+<p style="margin:2px 0 0;font-family:var(--font-sans);font-size:13px;color:var(--ink-45)">PDF document</p>
+</div>
+<span style="font-family:var(--font-sans);font-size:13.5px;font-weight:600;color:var(--pink-600);white-space:nowrap">Open ↗</span>
+</div>
+</section>
+<section style="max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter) var(--space-9)">
+<span style="display:block;font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-45);margin:0 0 32px">Related Projects</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px">
+<sc-for list="{{ related }}" as="r" hint-placeholder-count="2">
+<a href="{{ r.href }}" style="text-decoration:none;color:var(--ink);display:block">
+<div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:transparent"><image-slot id="{{ r.imgId }}" shape="rect" fit="contain" placeholder="{{ r.title }}" style="width:100%;height:100%"></image-slot></div>
+<h3 style="font-family:var(--font-serif);font-weight:600;font-size:20px;margin:14px 0 0;color:var(--ink)">{{ r.title }}</h3>
+<p style="font-family:var(--font-sans);font-size:13px;color:var(--ink-45);margin:4px 0 0">{{ r.category }}</p>
+</a>
+</sc-for>
+</div>
+</section>
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  relatedData = [
+    { title: 'HaLevi Feldman Branding', category: 'Branding', href: 'Halevi-Feldman-Logo-Design.dc.html', imgId: 'project-halevi-feldman' },
+    { title: 'Colorplan', category: 'Animation', href: 'Colorplan-Digital-Campaign.dc.html', imgId: 'project-colorplan' }
+  ];
+  componentDidMount() {
+    this._raf = null;
+    this.onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+        if (this.progressEl) this.progressEl.style.width = Math.min(100, Math.max(0, pct)) + '%';
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    import('./cursor.js').then((m) => m.initCursor());
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+  setProgressRef = (el) => { this.progressEl = el; };
+  renderVals() {
+    return {
+      setProgressRef: this.setProgressRef,
+      serviceTags: ['Conceptual Design', 'Branding'],
+      related: this.relatedData,
+      goToContact: () => { window.location.href = 'Contact.dc.html'; }
+    };
+  }
+}
+</script>
+</body>
+</html>

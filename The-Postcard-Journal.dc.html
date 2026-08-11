@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="ds/tokens/colors.css">
+<link rel="stylesheet" href="ds/tokens/typography.css">
+<link rel="stylesheet" href="ds/tokens/spacing.css">
+<link rel="stylesheet" href="ds/tokens/radius-shadow.css">
+<link rel="stylesheet" href="ds/tokens/motion.css">
+<link rel="stylesheet" href="ds/styles.css">
+<script src="ds/_ds_bundle.js"></script>
+<script src="./images.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; } body { margin: 0; } * { box-sizing: border-box; }
+::selection { background: rgba(168,71,90,0.18); }
+a { color: var(--link-default); } a:hover { color: var(--link-hover); }
+</style>
+</helmet>
+<div style="background:var(--surface-page);color:var(--text-primary);font-family:var(--font-sans);overflow-x:hidden;position:relative">
+<div ref="{{ setProgressRef }}" style="position:fixed;top:0;left:0;height:3px;width:0%;background:var(--accent-primary);z-index:9999"></div>
+<header style="position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.86);backdrop-filter:blur(10px);border-bottom:var(--border-hairline)">
+<div style="max-width:var(--container-max);margin:0 auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between">
+<a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+<img src="assets/logo/mark-ink.svg" alt="Mira" style="height:38px;width:auto">
+</a>
+<nav style="display:flex;gap:30px;align-items:center">
+<a href="Home.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Home</a>
+<a href="Work.dc.html" style="text-decoration:none;color:var(--ink);font-size:14.5px;font-weight:600;padding-bottom:6px;border-bottom:2px solid var(--accent-primary)">Projects</a>
+<a href="About.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">About</a>
+<a href="Contact.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:14.5px;font-weight:600">Contact</a>
+<x-import component-from-global-scope="MiraHaleviDesignSystem_de6578.Button" hint-size="auto,36px" variant="primary" size="sm" onClick="{{ goToContact }}">Let's talk</x-import>
+</nav>
+</div>
+</header>
+<section style="max-width:var(--container-max);margin:0 auto;padding:var(--space-8) var(--gutter) var(--space-8)">
+<a href="Work.dc.html" style="text-decoration:none;color:var(--ink-70);font-size:13.5px;font-weight:600;display:inline-block;margin-bottom:28px">← All work</a>
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+<sc-for list="{{ serviceTags }}" as="t" hint-placeholder-count="2">
+<span style="font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--green-700);background:var(--green-50);padding:5px 13px;border-radius:var(--radius-pill);white-space:nowrap">{{ t }}</span>
+</sc-for>
+</div>
+<h1 style="font-family:var(--font-serif);font-weight:600;font-style:italic;font-size:clamp(2rem,1.3rem + 2.5vw,3.5rem);letter-spacing:0;color:var(--ink);margin:0 0 20px;max-width:760px;line-height:1.15">The Postcard Journal</h1>
+<div style="display:flex;flex-direction:column;gap:16px;max-width:820px">
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);font-weight:var(--weight-light);margin:0">An exploration of how journaling can become more approachable, creative, and forgiving by moving it away from the traditional blank-page format. Instead of committing thoughts to a single notebook, the project translates journaling into a collection of postcards, allowing each entry to exist independently without the pressure of filling an entire book or getting a page "wrong."</p>
+<p style="font-family:var(--font-sans);font-size:var(--text-body-lg);color:var(--ink-70);font-weight:var(--weight-light);margin:0">I created a series of postcards, a reusable postcard template with custom stamps, and a hand-bound instructional book explaining how to create the system yourself.</p>
+</div>
+</section>
+<section style="max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter) var(--space-9);display:flex;flex-direction:column;gap:64px">
+<sc-for list="{{ mediaGroups }}" as="grp" hint-placeholder-count="2">
+<div>
+<span style="display:block;font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-45);margin:0 0 20px">{{ grp.label }}</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax({{ grp.minTile }}px,1fr));gap:20px">
+<sc-for list="{{ grp.items }}" as="g" hint-placeholder-count="4">
+<div onClick="{{ g.onOpen }}" data-cursor="Zoom" style="cursor:pointer">
+<div style="width:100%;aspect-ratio:{{ grp.aspect }};overflow:hidden;background:transparent"><image-slot id="{{ g.id }}" shape="rect" fit="contain" placeholder="{{ g.caption }}" style="width:100%;height:100%"></image-slot></div>
+<p style="font-family:var(--font-sans);font-size:13px;color:var(--ink-70);margin:8px 0 0">{{ g.caption }}</p>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</section>
+<section style="max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter) var(--space-9)">
+<span style="display:block;font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--ink-45);margin:0 0 32px">Related Projects</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px">
+<sc-for list="{{ related }}" as="r" hint-placeholder-count="2">
+<a href="{{ r.href }}" style="text-decoration:none;color:var(--ink);display:block">
+<div style="width:100%;aspect-ratio:4/3;overflow:hidden;background:transparent"><image-slot id="{{ r.imgId }}" shape="rect" fit="contain" placeholder="{{ r.title }}" style="width:100%;height:100%"></image-slot></div>
+<h3 style="font-family:var(--font-serif);font-weight:600;font-size:20px;margin:14px 0 0;color:var(--ink)">{{ r.title }}</h3>
+<p style="font-family:var(--font-sans);font-size:13px;color:var(--ink-45);margin:4px 0 0">{{ r.category }}</p>
+</a>
+</sc-for>
+</div>
+</section>
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+<sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeLightbox }}" style="position:fixed;inset:0;background:rgba(24,20,15,0.94);z-index:10000;display:flex;align-items:center;justify-content:center;padding:64px">
+<button onClick="{{ closeLightbox }}" style="position:absolute;top:28px;right:36px;background:none;border:none;color:#fff;font-size:15px;cursor:pointer;font-family:var(--font-sans)">Close ✕</button>
+<button onClick="{{ prevLightbox }}" style="position:absolute;left:28px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:28px;cursor:pointer">‹</button>
+<div style="max-width:min(900px,80vw);max-height:82vh;display:flex;align-items:center;justify-content:center" onClick="{{ stopProp }}">
+<sc-if value="{{ hasGallerySrc }}" hint-placeholder-val="{{ false }}"><img ref="{{ setLightboxImg }}" alt="{{ currentGalleryCaption }}" style="max-width:100%;max-height:82vh;width:auto;height:auto;object-fit:contain;display:block"></sc-if>
+<sc-if value="{{ noGallerySrc }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--font-sans);font-size:14px;color:rgba(255,255,255,0.7)">{{ currentGalleryCaption }}</span></sc-if>
+</div>
+<button onClick="{{ nextLightbox }}" style="position:absolute;right:28px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:28px;cursor:pointer">›</button>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lightboxIndex: null };
+  mediaGroupsData = [
+    { label: 'The System', aspect: '4/3', minTile: 280, items: [
+      { id: 'pj-stamps', caption: 'Stamps' },
+      { id: 'pj-postcards', caption: 'Postcards I made' }
+    ] },
+    { label: 'The Book', aspect: '3/4', minTile: 220, items: [
+      { id: 'pj-book1', caption: 'Hand-bound book — image 1' },
+      { id: 'pj-book2', caption: 'Hand-bound book — image 2' },
+      { id: 'pj-cover', caption: 'Cover page' },
+      { id: 'pj-intro', caption: 'Introduction page' },
+      { id: 'pj-instruction', caption: 'Instruction page' },
+      { id: 'pj-example', caption: 'Example page' }
+    ] }
+  ];
+  relatedData = [
+    { title: 'Murder Most Unladylike', category: 'Illustration', href: 'Murder-Most-Unladylike.dc.html', imgId: 'project-murder-unladylike' },
+    { title: 'Naval Photographer', category: 'Photography', href: 'Naval-Photographer.dc.html', imgId: 'project-naval-photographer' }
+  ];
+  componentDidMount() {
+    this._raf = null;
+    this.onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+        if (this.progressEl) this.progressEl.style.width = Math.min(100, Math.max(0, pct)) + '%';
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    import('./cursor.js').then((m) => m.initCursor());
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+  setProgressRef = (el) => { this.progressEl = el; };
+  flatImages() { return this.mediaGroupsData.flatMap((g) => g.items); }
+
+  // Reads the pixels already held by the grid's own image-slot instead of
+  // mounting a second slot under the same id — two elements sharing one
+  // persistence key was letting the empty one overwrite the stored upload.
+  slotSrc(id) {
+    if (!id) return '';
+    const el = document.getElementById(id);
+    const img = el && el.shadowRoot ? el.shadowRoot.querySelector('img') : null;
+    return img && img.getAttribute('src') ? img.getAttribute('src') : '';
+  }
+
+
+  // src is assigned from JS, never authored as a {{ }} hole: the HTML parser
+  // would fetch the literal hole text before the runtime could compile it.
+  setLightboxImg = (el) => { this.lightboxImg = el; this.syncLightboxImg(); };
+  syncLightboxImg = () => {
+    const el = this.lightboxImg;
+    if (!el) return;
+    const src = this.slotSrc(this._lbId);
+    if (src) { if (el.getAttribute('src') !== src) el.setAttribute('src', src); }
+    else el.removeAttribute('src');
+  };
+  componentDidUpdate() { this.syncLightboxImg(); }
+
+  renderVals() {
+    const idx = this.state.lightboxIndex;
+    const flat = this.flatImages();
+    let counter = 0;
+    const mediaGroups = this.mediaGroupsData.map((g) => ({ ...g, items: g.items.map((it) => { const i = counter++; return { ...it, onOpen: () => this.setState({ lightboxIndex: i }) }; }) }));
+    const current = idx !== null ? flat[idx] : null;
+    this._lbId = current ? current.id : '';
+    return {
+      setProgressRef: this.setProgressRef,
+      serviceTags: ['Conceptual Design'],
+      mediaGroups, related: this.relatedData,
+      lightboxOpen: idx !== null,
+      currentGalleryId: current ? current.id : '',
+      setLightboxImg: this.setLightboxImg,
+      hasGallerySrc: !!this.slotSrc(current ? current.id : ''),
+      noGallerySrc: current !== null && !this.slotSrc(current ? current.id : ''),
+      currentGalleryCaption: current ? current.caption : '',
+      goToContact: () => { window.location.href = 'Contact.dc.html'; },
+      closeLightbox: () => this.setState({ lightboxIndex: null }),
+      stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      prevLightbox: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState((s) => ({ lightboxIndex: (s.lightboxIndex + flat.length - 1) % flat.length })); },
+      nextLightbox: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState((s) => ({ lightboxIndex: (s.lightboxIndex + 1) % flat.length })); }
+    };
+  }
+}
+</script>
+</body>
+</html>
